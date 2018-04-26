@@ -6,6 +6,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import pickle
 import json
+import WordVocabBuilder
 
 StoredImageFeaturesFile = 'img_feats_train_0_1_2_3_10_12_fc1'
 ImageDescriptionMetaDataFile = 'train.description-in-isolation.json'
@@ -45,12 +46,25 @@ def loadAnnotations(image_features):
     
     return description
                     
+def buildVocabDictionary(annotationsList):
+    all_sentences = []
+    for key, value in annotationsList.items():
+        sent = value
+        sent = sent.lower()
+        sent = sent.strip()
+        sent = sent.replace(',', ' ,')
+        sent = sent.replace('.', '')
+        sent = sent.replace('"', ' " ')
+        all_sentences.append(sent)
+            
+    word2idx, idx2word = WordVocabBuilder.preProBuildWordVocab(all_sentences, 2)
+    return word2idx, idx2word
     
 def main():
     
     image_features = loadImageFeatures()
     annotations = loadAnnotations(image_features)
-
+    word2idx, idx2word = buildVocabDictionary(annotations)
 if __name__ == "__main__":
     main()
         
