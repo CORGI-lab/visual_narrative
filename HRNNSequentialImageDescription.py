@@ -12,9 +12,14 @@ StoredImageFeaturesFile = 'img_feats_train_0_1_2_3_10_12_fc1'
 ImageDescriptionMetaDataFile = 'train.description-in-isolation.json'
 
 class SequentialImageDescription:
-    def __init__(self):
-        self.image_features = dict()
-        self.annotations = dict()
+    def __init__(self, feature_dimension, sentRNN_lstm_dim, sentRNN_FC_dim, wordRNN_lstm_dim, word_embed_dim, project_dim, N_max_word):
+        self.feature_dimension = feature_dimension
+        self.wordRNN_lstm_dim = wordRNN_lstm_dim
+        self.word_embed_dim = word_embed_dim
+        self.project_dim = project_dim
+        self.sentRNN_lstm_dim = sentRNN_lstm_dim
+        self.sentRNN_FC_dim = sentRNN_FC_dim
+        self.N_max_word = N_max_word
 
 def loadImageFeatures():
     image_features_list = pickle.load(open(StoredImageFeaturesFile, 'rb'))
