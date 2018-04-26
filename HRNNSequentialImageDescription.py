@@ -15,10 +15,7 @@ class SequentialImageDescription:
         self.image_features = dict()
         self.annotations = dict()
     def loadImageFeatures(self):
-        try:
-            image_features_list = pickle.load(open(StoredImageFeaturesFile, 'rb'))
-        except Exception as e:
-            print(e)
+        image_features_list = pickle.load(open(StoredImageFeaturesFile, 'rb'))
         for j in range(len(image_features_list)):
             image_id = image_features_list[j]['id']
             features = image_features_list[j]['features']
