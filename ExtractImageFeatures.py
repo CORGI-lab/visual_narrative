@@ -8,6 +8,7 @@ import pickle
 from keras.preprocessing import image
 import cv2
 import logging
+imoprt SaliencyDetector
 
 logFile = 'feature_extraction.log'
 logging.basicConfig(filename=logFile,format='%(asctime)s %(levelname)s: %(message)s',
@@ -25,7 +26,7 @@ class ExtractImageFeatures:
             logging.error('File does not exist %s', imagePath)
             raise Exception('File does not exist %s', imagePath)
         else:
-            img = cv2.imread(imagePath)
+            img = SaliencyDetector.GetSalientImage(imagePath)
             resized_img = cv2.resize(img, (224,224))
             x = np.expand_dims(resized_img, axis=0)
             features = self.model.predict(x)
