@@ -281,7 +281,7 @@ def train_model():
     tf.global_variables_initializer().run()
     training_data_length = len(x_train)
     for epoch in range(0, n_epochs):
-            loss = 0;
+            loss = 0
             total_pass = 0
             start_time = time.time()
             for i in range(0, training_data_length, batch_size):

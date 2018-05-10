@@ -8,7 +8,7 @@ import pickle
 from keras.preprocessing import image
 import cv2
 import logging
-imoprt SaliencyDetector
+import SaliencyDetector
 
 logFile = 'feature_extraction.log'
 logging.basicConfig(filename=logFile,format='%(asctime)s %(levelname)s: %(message)s',
